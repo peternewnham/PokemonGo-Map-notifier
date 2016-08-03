@@ -127,7 +127,7 @@
   },
   "11": {
     "name": "Metapod",
-    "rarity": "Rare",
+    "rarity": "Uncommon",
     "types": [
       {
         "type": "Bug",
@@ -168,7 +168,7 @@
   },
   "14": {
     "name": "Kakuna",
-    "rarity": "Rare",
+    "rarity": "Uncommon",
     "types": [
       {
         "type": "Bug",
@@ -317,7 +317,7 @@
   },
   "25": {
     "name": "Pikachu",
-    "rarity": "Uncommon",
+    "rarity": "Rare",
     "types": [
       {
         "type": "Electric",
@@ -973,7 +973,7 @@
   },
   "77": {
     "name": "Ponyta",
-    "rarity": "Rare",
+    "rarity": "Uncommon",
     "types": [
       {
         "type": "Fire",
