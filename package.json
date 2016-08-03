@@ -1,0 +1,31 @@
+{
+  "name": "PokemonGo-Map-notifier",
+  "version": "1.0.0",
+  "description": "Webhook for pokemon go map for sending notifications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrakky/PokemonGo-Map-notifier.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrakky/PokemonGo-Map-notifier/issues"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "homepage": "https://github.com/wrakky/PokemonGo-Map-notifier#readme",
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "express": "4.14.0",
+    "moment": "2.14.1",
+    "nodemon": "1.10.0",
+    "request": "2.74.0"
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "error": {
+    "code": 400,
+    "description": "Value {value!r} is not of type {expected_type!r}",
+    "expected_type": [
+      {
+        "type": "null"
+      },
+      {
+        "additionalProperties": true,
+        "properties": {
+          "activity": {
+            "additionalProperties": false,
+            "description": "The activity will generate a collapsable card of one line showing the html\nand the ability to maximize to see  all the content.",
+            "optional": true,
+            "properties": {
+              "html": {
+                "description": "Html for the activity to show in one line a summary of the action that happened",
+                "minLength": 1,
+                "type": "string"
+              },
+              "icon": {
+                "optional": true,
+                "type": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "properties": {
+                      "url": {
+                        "description": "The url where the icon is",
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "url@2x": {
+                        "description": "The url for the icon in retina",
+                        "minLength": 1,
+                        "optional": true,
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ]
+              }
+            },
+            "type": "object"
+          },
+          "attributes": {
+            "description": "List of attributes to show below the card. Sample {label}:{value.icon} {value.label}",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "label": {
+                  "maxLength": 50,
+                  "minLength": 1,
+                  "optional": true,
+                  "type": "string"
+                },
+                "value": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "icon": {
+                      "optional": true,
+                      "type": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "additionalProperties": true,
+                          "properties": {
+                            "url": {
+                              "description": "The url where the icon is",
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "url@2x": {
+                              "description": "The url for the icon in retina",
+                              "minLength": 1,
+                              "optional": true,
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "label": {
+                      "description": "The text representation of the value",
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "style": {
+                      "description": "AUI Integrations for now supporting only lozenges",
+                      "enum": [
+                        "lozenge-success",
+                        "lozenge-error",
+                        "lozenge-current",
+                        "lozenge-complete",
+                        "lozenge-moved",
+                        "lozenge"
+                      ],
+                      "minLength": 1,
+                      "optional": true,
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "Url to be opened when a user clicks on the label",
+                      "minLength": 1,
+                      "optional": true,
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "maxLength": 10,
+            "minLength": 1,
+            "optional": true,
+            "type": "array"
+          },
+          "description": {
+            "optional": true,
+            "type": [
+              {
+                "maxLength": 500,
+                "minLength": 0,
+                "type": "string"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "format": {
+                    "description": "The format that can be html or text",
+                    "enum": [
+                      "html",
+                      "text"
+                    ],
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "The description in the specific format",
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            ]
+          },
+          "format": {
+            "description": "Application cards can be compact (1 to 2 lines) or medium (1 to 5 lines)",
+            "enum": [
+              "compact",
+              "medium"
+            ],
+            "maxLength": 25,
+            "minLength": 1,
+            "optional": true,
+            "type": "string"
+          },
+          "icon": {
+            "optional": true,
+            "type": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": true,
+                "properties": {
+                  "url": {
+                    "description": "The url where the icon is",
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "url@2x": {
+                    "description": "The url for the icon in retina",
+                    "minLength": 1,
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            ]
+          },
+          "id": {
+            "description": "An id that will help HipChat recognise the same card when it is sent multiple times",
+            "minLength": 1,
+            "type": "string"
+          },
+          "style": {
+            "description": "Type of the card",
+            "enum": [
+              "file",
+              "image",
+              "application",
+              "link",
+              "media"
+            ],
+            "maxLength": 16,
+            "minLength": 1,
+            "type": "string"
+          },
+          "thumbnail": {
+            "additionalProperties": true,
+            "optional": true,
+            "properties": {
+              "height": {
+                "description": "The original height of the image",
+                "optional": true,
+                "type": "number"
+              },
+              "url": {
+                "description": "The thumbnail url",
+                "maxLength": 250,
+                "minLength": 1,
+                "type": "string"
+              },
+              "url@2x": {
+                "description": "The thumbnail url in retina",
+                "maxLength": 250,
+                "minLength": 1,
+                "optional": true,
+                "type": "string"
+              },
+              "width": {
+                "description": "The original width of the image",
+                "optional": true,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "title": {
+            "description": "The title of the card",
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "description": "The url where the card will open",
+            "minLength": 1,
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    ],
+    "field": "card",
+    "message": "Value {u'style': u'application', u'title': u'A wild Scyther appeared!', u'format': u'compact'} for field 'card' is not of type [{'type': 'null'}, {'additionalProperties': True, 'type': 'object', 'properties': {u'style': {'description': 'Type of the card', 'minLength': 1, 'enum': ['file', 'image', 'application', 'link', 'media'], 'maxLength': 16, 'type': 'string'}, u'description': {'optional': True, 'type': [{'minLength': 0, 'type': 'string', 'maxLength': 500}, {'additionalProperties': False, 'type': 'object', 'properties': {u'value': {'minLength': 1, 'type': 'string', 'description': 'The description in the specific format', 'maxLength': 1000}, u'format': {'minLength': 1, 'enum': ['html', 'text'], 'type': 'string', 'description': 'The format that can be html or text'}}}]}, u'format': {'description': 'Application cards can be compact (1 to 2 lines) or medium (1 to 5 lines)', 'minLength': 1, 'enum': ['compact', 'medium'], 'optional': True, 'maxLength': 25, 'type': 'string'}, u'url': {'minLength': 1, 'type': 'string', 'description': 'The url where the card will open', 'optional': True}, u'title': {'minLength': 1, 'type': 'string', 'description': 'The title of the card', 'maxLength': 500}, u'thumbnail': {'additionalProperties': True, 'optional': True, 'type': 'object', 'properties': {u'url': {'minLength': 1, 'type': 'string', 'description': 'The thumbnail url', 'maxLength': 250}, u'width': {'optional': True, 'type': 'number', 'description': 'The original width of the image'}, 'url@2x': {'description': 'The thumbnail url in retina', 'minLength': 1, 'optional': True, 'maxLength': 250, 'type': 'string'}, u'height': {'optional': True, 'type': 'number', 'description': 'The original height of the image'}}}, u'activity': {'description': 'The activity will generate a collapsable card of one line showing the html\\nand the ability to maximize to see  all the content.', 'type': 'object', 'additionalProperties': False, 'optional': True, 'properties': {u'html': {'minLength': 1, 'type': 'string', 'description': 'Html for the activity to show in one line a summary of the action that happened'}, u'icon': {'optional': True, 'type': [{'type': 'string'}, {'additionalProperties': True, 'type': 'object', 'properties': {u'url': {'minLength': 1, 'type': 'string', 'description': 'The url where the icon is'}, 'url@2x': {'minLength': 1, 'type': 'string', 'description': 'The url for the icon in retina', 'optional': True}}}]}}}, u'attributes': {'description': 'List of attributes to show below the card. Sample {label}:{value.icon} {value.label}', 'items': {'additionalProperties': False, 'type': 'object', 'properties': {u'value': {'additionalProperties': False, 'type': 'object', 'properties': {u'url': {'minLength': 1, 'type': 'string', 'description': 'Url to be opened when a user clicks on the label', 'optional': True}, u'style': {'description': 'AUI Integrations for now supporting only lozenges', 'minLength': 1, 'enum': ['lozenge-success', 'lozenge-error', 'lozenge-current', 'lozenge-complete', 'lozenge-moved', 'lozenge'], 'optional': True, 'type': 'string'}, u'label': {'minLength': 1, 'type': 'string', 'description': 'The text representation of the value'}, u'icon': {'optional': True, 'type': [{'type': 'string'}, {'additionalProperties': True, 'type': 'object', 'properties': {u'url': {'minLength': 1, 'type': 'string', 'description': 'The url where the icon is'}, 'url@2x': {'minLength': 1, 'type': 'string', 'description': 'The url for the icon in retina', 'optional': True}}}]}}}, u'label': {'minLength': 1, 'type': 'string', 'optional': True, 'maxLength': 50}}}, 'optional': True, 'maxLength': 10, 'type': 'array', 'minLength': 1}, u'id': {'minLength': 1, 'type': 'string', 'description': 'An id that will help HipChat recognise the same card when it is sent multiple times'}, u'icon': {'optional': True, 'type': [{'type': 'string'}, {'additionalProperties': True, 'type': 'object', 'properties': {u'url': {'minLength': 1, 'type': 'string', 'description': 'The url where the icon is'}, 'url@2x': {'minLength': 1, 'type': 'string', 'description': 'The url for the icon in retina', 'optional': True}}}]}}}]",
+    "type": "Bad Request",
+    "validation": "type",
+    "value": {
+      "format": "compact",
+      "style": "application",
+      "title": "A wild Scyther appeared!"
+    }
+  }
