@@ -33,11 +33,13 @@ app.post('/', (req, res) => {
       distance,
       rarity,
       name,
-      expiry: moment(disappear_time)
+      expiry: moment(disappear_time * 1000)
     });
+    console.log(`Sent notification for ${name} ${rarity} (${distance}m)`);
     res.send(`Sent notification for ${name} ${rarity} (${distance}m)`);
   }
   else {
+    console.log(`Sent notification for ${name} ${rarity} (${distance}m)`);
     res.send(`Ignoring ${name} ${rarity} (${distance}m)`);
   }
 });
