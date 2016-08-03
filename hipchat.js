@@ -1,5 +1,8 @@
 const request = require('request');
 
+
+const seen = [];
+
 class HipChatNotifier {
 
   constructor(config) {
@@ -20,7 +23,7 @@ class HipChatNotifier {
 
     const { room_id, token, map_key, latitude:center_latitude, longitude:center_longitude } = this.config;
     const {encounter_id, spawnpoint_id, pokemon_id, latitude, longitude, disappear_time} = data;
-    const { rarity, distance, name, expiry } = details;
+    const { rarity, distance, name, expiry, key } = details;
 
     let lozenge, color;
     if (distance < 40) {
@@ -40,15 +43,13 @@ class HipChatNotifier {
       lozenge = 'lozenge';
     }
 
-    console.log(color, distance, name, rarity, lozenge, expiry.fromNow(), latitude, longitude, pokemon_id);
-
     const body = {
       color: color,
       message_format: 'html',
       notify: true,
       message: `${distance}m - A wild ${name} appeared! (${rarity})`,
       card: {
-        id: `${String(Date.now())}.${encounter_id}.${spawnpoint_id}`,
+        id: key,
         format: 'compact',
         style: 'application',
         title: `A wild ${name} appeared!`,
@@ -92,23 +93,29 @@ class HipChatNotifier {
       }
     };
 
-    const REQUEST_OPTIONS = {
-      uri: `https://api.hipchat.com/v2/room/${room_id}/notification?auth_token=${token}`,
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    };
+    if (seen.indexOf(key) === -1) {
 
-    request.post(REQUEST_OPTIONS, (error, response, body) => {
-      if (error) {
-        console.error('error', error);
-      }
-      else if (response.statusCode !== 200 && response.statusCode !== 204) {
-        console.warn('error', body);
-      }
-    });
+      const REQUEST_OPTIONS = {
+        uri: `https://api.hipchat.com/v2/room/${room_id}/notification?auth_token=${token}`,
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      };
+
+      request.post(REQUEST_OPTIONS, (error, response, body) => {
+        if (error) {
+          console.error('error', error);
+        }
+        else if (response.statusCode !== 200 && response.statusCode !== 204) {
+          console.warn('error', body);
+        }
+      });
+
+      seen.push(key);
+
+    }
 
   }
 

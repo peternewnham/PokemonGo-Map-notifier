@@ -24,12 +24,14 @@ app.post('/', (req, res) => {
 
   const {type, message} = req.body;
   const {encounter_id, spawnpoint_id, pokemon_id, latitude, longitude, disappear_time} = message;
+  const key = `${encounter_id}.${spawnpoint_id}`;
   const { rarity, name } = pokemon_data[pokemon_id];
   const radius = config.radius[rarity];
   const distance = calculateDistance(config.latitude, config.longitude, latitude, longitude);
 
   if (type === 'pokemon' && radius && distance < radius) {
     Hipchat.send(message, {
+      key,
       distance,
       rarity,
       name,
